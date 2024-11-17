@@ -40,6 +40,7 @@ public class TaskTeamScoreboard extends TaskScoreboard {
     @Override
     public void detect(ParticipantInfo participant, Map.Entry<UUID, IQuest> quest) {
         final var teamScore = getTeamScoreForPlayer(participant.PLAYER);
+        LOG.info("{} for {}'s team is {}", scoreDisp, participant.PLAYER.getCommandSenderName(), teamScore);
         ScoreboardBQ.INSTANCE.setScore(participant.UUID, scoreName, teamScore);
         if (operation.checkValues(teamScore, target)) {
             setComplete(participant.UUID);

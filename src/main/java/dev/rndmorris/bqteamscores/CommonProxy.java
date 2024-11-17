@@ -7,6 +7,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import dev.rndmorris.bqteamscores.rewards.factory.FactoryRewardTeamScoreboard;
 import dev.rndmorris.bqteamscores.tasks.factory.FactoryTaskTeamScoreboard;
 
 public class CommonProxy {
@@ -34,5 +35,8 @@ public class CommonProxy {
     public void registerQuestingComponents() {
         final var taskRegistry = QuestingAPI.getAPI(ApiReference.TASK_REG);
         taskRegistry.register(FactoryTaskTeamScoreboard.INSTANCE);
+
+        final var rewardRegistry = QuestingAPI.getAPI(ApiReference.REWARD_REG);
+        rewardRegistry.register(FactoryRewardTeamScoreboard.INSTANCE);
     }
 }
